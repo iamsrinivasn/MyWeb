@@ -1,0 +1,28 @@
+app:
+  name: httpd Loadgen
+  code: TCLG
+  notify: srini@axiomio.com
+
+build:
+  version: 0.3
+  env: DEVTEST
+  build_file: pom.xml
+  output_files: output/*.war
+  image_template: httpd
+
+deploy:
+  context: iamsrinivasn/MyWeb
+  replicas: 2
+  port: 80
+  strategy : rolling
+  ready_seconds : 45
+
+properties:
+  title: Httpd WebPage - Demo over Test web
+  head_color : Green
+  threads: 1
+  delay: 60
+  next: 60
+  download: true
+  random : true
+  nano : 314
